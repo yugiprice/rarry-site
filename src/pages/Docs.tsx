@@ -5,6 +5,9 @@ import eventsTableShot from '../assets/screenshots/events-table.jpg'
 import eventsOrderShot from '../assets/screenshots/events-order.jpg'
 import matchInputShot from '../assets/screenshots/match-input.jpg'
 import calendarShot from '../assets/screenshots/calendar.jpg'
+import practiceShot from '../assets/screenshots/practice.jpg'
+import eventsListShot from '../assets/screenshots/events-list.jpg'
+import profileShot from '../assets/screenshots/profile.jpg'
 
 function Shot({ src, alt }: { src: string; alt: string }) {
   return (
@@ -75,10 +78,13 @@ const SECTIONS: Section[] = [
     id: 'ranking',
     title: 'ランキング',
     body: (
-      <p>
-        チーム内のレーティング順位を確認できます（管理者向け画面）。各メンバーのプロフィールページでは、
-        レーティングの推移グラフや直近の試合結果も見られます。
-      </p>
+      <>
+        <Shot src={eventsListShot} alt="対戦表・順位画面" />
+        <p>
+          チーム内のレーティング順位を確認できます（管理者向け画面）。各メンバーのプロフィールページでは、
+          レーティングの推移グラフや直近の試合結果も見られます。
+        </p>
+      </>
     ),
   },
   {
@@ -86,6 +92,7 @@ const SECTIONS: Section[] = [
     title: '練習セッション',
     body: (
       <>
+        <Shot src={practiceShot} alt="練習セッション画面" />
         <p>
           その日の参加者と使用する卓球台の数を選ぶと、自動で台割りとタイマーが決まります。
           台の人数に応じてタイマーの長さを自動調整するモードと、全台まとめて同じ時間で進めるモードを選べます。
@@ -177,11 +184,14 @@ const SECTIONS: Section[] = [
     id: 'visitor-qr',
     title: '他チームのビジター参加（QR）',
     body: (
-      <p>
-        マイページから、他チームで参加登録するための使い捨てQRコード（10分間有効）を表示できます。
-        訪問先チームの管理者がカメラで読み取ると、そのチームのビジター（アカウント無し扱い・レーティング対象外）
-        として、試合入力・練習・対戦表にすぐに加われます。
-      </p>
+      <>
+        <Shot src={profileShot} alt="マイページ画面" />
+        <p>
+          マイページから、他チームで参加登録するための使い捨てQRコード（10分間有効）を表示できます。
+          訪問先チームの管理者がカメラで読み取ると、そのチームのビジター（アカウント無し扱い・レーティング対象外）
+          として、試合入力・練習・対戦表にすぐに加われます。
+        </p>
+      </>
     ),
   },
   {
