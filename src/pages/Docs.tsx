@@ -1,5 +1,18 @@
 import type { ReactNode } from 'react'
 import { APP_SIGNUP_URL } from '../lib/config'
+import homeShot from '../assets/screenshots/home.jpg'
+import eventsTableShot from '../assets/screenshots/events-table.jpg'
+import eventsOrderShot from '../assets/screenshots/events-order.jpg'
+
+function Shot({ src, alt }: { src: string; alt: string }) {
+  return (
+    <img
+      src={src}
+      alt={alt}
+      className="mx-auto w-full max-w-[260px] rounded-2xl border border-slate-200 shadow-sm sm:float-right sm:ml-6 sm:mb-2"
+    />
+  )
+}
 
 type Section = { id: string; title: string; body: ReactNode }
 
@@ -85,6 +98,7 @@ const SECTIONS: Section[] = [
     title: '対戦表（リーグ戦・トーナメント・団体戦・ダブルス）',
     body: (
       <>
+        <Shot src={eventsTableShot} alt="対戦表画面" />
         <p>
           参加者を選んで分け方（レベル別・ランダム・バランス調整など）を選ぶだけで、対戦表が自動生成されます。
         </p>
@@ -104,6 +118,7 @@ const SECTIONS: Section[] = [
     title: '団体戦のオーダー機能',
     body: (
       <>
+        <Shot src={eventsOrderShot} alt="試合順画面" />
         <p>
           参加者をチームに分けた後、対戦するチームどうしがそれぞれ「オーダー」（誰がダブルス・シングルスに
           出るか）を組みます。チームの人数が5人以上なら「ダブルス1＋シングルス4」、4人以下なら
@@ -122,6 +137,7 @@ const SECTIONS: Section[] = [
     title: 'お知らせ・カレンダー・出欠確認',
     body: (
       <>
+        <Shot src={homeShot} alt="ホーム画面" />
         <p>
           ホーム画面から、サークル全体へのお知らせを投稿できます。重要なお知らせは先頭に固定表示できます。
         </p>
