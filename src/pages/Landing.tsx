@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { APP_SIGNUP_URL } from '../lib/config'
 import PhoneMock from '../components/PhoneMock'
 import homeShot from '../assets/screenshots/home.jpg'
-import eventsOrderShot from '../assets/screenshots/events-order.jpg'
+import profileShot from '../assets/screenshots/profile.jpg'
 import matchInputShot from '../assets/screenshots/match-input.jpg'
 
 type Feature = { icon: string; title: string; body: string; free?: boolean }
@@ -51,7 +51,7 @@ export default function Landing() {
         <div className="mx-auto mt-12 grid max-w-3xl grid-cols-3 items-start gap-4 sm:gap-6">
           <PhoneMock src={homeShot} alt="ホーム画面（レーティング・招待リンク・アンケート・お知らせ）" />
           <PhoneMock src={matchInputShot} alt="試合入力画面" />
-          <PhoneMock src={eventsOrderShot} alt="対戦表（試合順）画面" />
+          <PhoneMock src={profileShot} alt="マイページ画面" />
         </div>
       </section>
 

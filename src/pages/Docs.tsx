@@ -8,15 +8,7 @@ import practiceShot from '../assets/screenshots/practice.jpg'
 import eventsListShot from '../assets/screenshots/events-list.jpg'
 import profileShot from '../assets/screenshots/profile.jpg'
 
-function Shot({ src, alt }: { src: string; alt: string }) {
-  return (
-    <div className="mx-auto w-full max-w-[200px] sm:float-right sm:ml-6 sm:mb-2">
-      <PhoneMock src={src} alt={alt} />
-    </div>
-  )
-}
-
-type Section = { id: string; title: string; body: ReactNode }
+type Section = { id: string; title: string; body: ReactNode; image?: { src: string; alt: string } }
 
 const SECTIONS: Section[] = [
   {
@@ -39,9 +31,9 @@ const SECTIONS: Section[] = [
   {
     id: 'team',
     title: 'チームを作る・メンバーを招待する',
+    image: { src: homeShot, alt: 'ホーム画面（招待リンク）' },
     body: (
       <>
-        <Shot src={homeShot} alt="ホーム画面（招待リンク）" />
         <p>
           トップページの「無料で始める」からアカウントを作成し、チーム名を入力するとチームが作成されます
           （作成した人がオーナー権限を持ちます）。
@@ -57,9 +49,9 @@ const SECTIONS: Section[] = [
   {
     id: 'matches',
     title: '試合を記録する・レーティングについて',
+    image: { src: matchInputShot, alt: '試合入力画面' },
     body: (
       <>
-        <Shot src={matchInputShot} alt="試合入力画面" />
         <p>
           「試合入力」画面で対戦相手とセットカウントを選ぶだけで結果が記録され、Eloレーティングをベースにした
           レーティングが自動で計算されます。各セットの点数まで入力することもできます。
@@ -74,22 +66,20 @@ const SECTIONS: Section[] = [
   {
     id: 'ranking',
     title: 'ランキング',
+    image: { src: eventsListShot, alt: '対戦表・順位画面' },
     body: (
-      <>
-        <Shot src={eventsListShot} alt="対戦表・順位画面" />
-        <p>
-          チーム内のレーティング順位を確認できます（管理者向け画面）。各メンバーのプロフィールページでは、
-          レーティングの推移グラフや直近の試合結果も見られます。
-        </p>
-      </>
+      <p>
+        チーム内のレーティング順位を確認できます（管理者向け画面）。各メンバーのプロフィールページでは、
+        レーティングの推移グラフや直近の試合結果も見られます。
+      </p>
     ),
   },
   {
     id: 'practice',
     title: '練習セッション',
+    image: { src: practiceShot, alt: '練習セッション画面' },
     body: (
       <>
-        <Shot src={practiceShot} alt="練習セッション画面" />
         <p>
           その日の参加者と使用する卓球台の数を選ぶと、自動で台割りとタイマーが決まります。
           台の人数に応じてタイマーの長さを自動調整するモードと、全台まとめて同じ時間で進めるモードを選べます。
@@ -104,9 +94,9 @@ const SECTIONS: Section[] = [
   {
     id: 'events',
     title: '対戦表（リーグ戦・トーナメント・団体戦・ダブルス）',
+    image: { src: eventsListShot, alt: '対戦表画面' },
     body: (
       <>
-        <Shot src={eventsListShot} alt="対戦表画面" />
         <p>
           参加者を選んで分け方（レベル別・ランダム・バランス調整など）を選ぶだけで、対戦表が自動生成されます。
         </p>
@@ -124,9 +114,9 @@ const SECTIONS: Section[] = [
   {
     id: 'team-order',
     title: '団体戦のオーダー機能',
+    image: { src: eventsOrderShot, alt: '試合順画面' },
     body: (
       <>
-        <Shot src={eventsOrderShot} alt="試合順画面" />
         <p>
           参加者をチームに分けた後、対戦するチームどうしがそれぞれ「オーダー」（誰がダブルス・シングルスに
           出るか）を組みます。チームの人数が5人以上なら「ダブルス1＋シングルス4」、4人以下なら
@@ -143,9 +133,9 @@ const SECTIONS: Section[] = [
   {
     id: 'calendar',
     title: 'お知らせ・カレンダー・出欠確認',
+    image: { src: homeShot, alt: 'ホーム画面（練習日カレンダー）' },
     body: (
       <>
-        <Shot src={homeShot} alt="ホーム画面（練習日カレンダー）" />
         <p>
           ホーム画面から、サークル全体へのお知らせを投稿できます。重要なお知らせは先頭に固定表示できます。
         </p>
@@ -180,15 +170,13 @@ const SECTIONS: Section[] = [
   {
     id: 'visitor-qr',
     title: '他チームのビジター参加（QR）',
+    image: { src: profileShot, alt: 'マイページ画面' },
     body: (
-      <>
-        <Shot src={profileShot} alt="マイページ画面" />
-        <p>
-          マイページから、他チームで参加登録するための使い捨てQRコード（10分間有効）を表示できます。
-          訪問先チームの管理者がカメラで読み取ると、そのチームのビジター（アカウント無し扱い・レーティング対象外）
-          として、試合入力・練習・対戦表にすぐに加われます。
-        </p>
-      </>
+      <p>
+        マイページから、他チームで参加登録するための使い捨てQRコード（10分間有効）を表示できます。
+        訪問先チームの管理者がカメラで読み取ると、そのチームのビジター（アカウント無し扱い・レーティング対象外）
+        として、試合入力・練習・対戦表にすぐに加われます。
+      </p>
     ),
   },
   {
@@ -250,7 +238,14 @@ export default function Docs() {
           {SECTIONS.map((s) => (
             <section key={s.id} id={s.id} className="scroll-mt-20">
               <h2 className="text-lg font-black text-slate-800">{s.title}</h2>
-              <div className="prose-sm mt-2 space-y-3 text-sm leading-relaxed text-slate-600">{s.body}</div>
+              <div className={`mt-3 ${s.image ? 'flex flex-col-reverse gap-6 sm:flex-row sm:items-start' : ''}`}>
+                <div className="min-w-0 flex-1 space-y-3 text-sm leading-relaxed text-slate-600">{s.body}</div>
+                {s.image && (
+                  <div className="mx-auto w-full max-w-[180px] shrink-0 sm:mx-0">
+                    <PhoneMock src={s.image.src} alt={s.image.alt} />
+                  </div>
+                )}
+              </div>
             </section>
           ))}
 
