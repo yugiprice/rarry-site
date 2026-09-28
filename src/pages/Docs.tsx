@@ -1,21 +1,18 @@
 import type { ReactNode } from 'react'
 import { APP_SIGNUP_URL } from '../lib/config'
+import PhoneMock from '../components/PhoneMock'
 import homeShot from '../assets/screenshots/home.jpg'
-import eventsTableShot from '../assets/screenshots/events-table.jpg'
 import eventsOrderShot from '../assets/screenshots/events-order.jpg'
 import matchInputShot from '../assets/screenshots/match-input.jpg'
-import calendarShot from '../assets/screenshots/calendar.jpg'
 import practiceShot from '../assets/screenshots/practice.jpg'
 import eventsListShot from '../assets/screenshots/events-list.jpg'
 import profileShot from '../assets/screenshots/profile.jpg'
 
 function Shot({ src, alt }: { src: string; alt: string }) {
   return (
-    <img
-      src={src}
-      alt={alt}
-      className="mx-auto w-full max-w-[260px] rounded-2xl border border-slate-200 shadow-sm sm:float-right sm:ml-6 sm:mb-2"
-    />
+    <div className="mx-auto w-full max-w-[200px] sm:float-right sm:ml-6 sm:mb-2">
+      <PhoneMock src={src} alt={alt} />
+    </div>
   )
 }
 
@@ -109,7 +106,7 @@ const SECTIONS: Section[] = [
     title: '対戦表（リーグ戦・トーナメント・団体戦・ダブルス）',
     body: (
       <>
-        <Shot src={eventsTableShot} alt="対戦表画面" />
+        <Shot src={eventsListShot} alt="対戦表画面" />
         <p>
           参加者を選んで分け方（レベル別・ランダム・バランス調整など）を選ぶだけで、対戦表が自動生成されます。
         </p>
@@ -148,7 +145,7 @@ const SECTIONS: Section[] = [
     title: 'お知らせ・カレンダー・出欠確認',
     body: (
       <>
-        <Shot src={calendarShot} alt="練習日カレンダー画面" />
+        <Shot src={homeShot} alt="ホーム画面（練習日カレンダー）" />
         <p>
           ホーム画面から、サークル全体へのお知らせを投稿できます。重要なお知らせは先頭に固定表示できます。
         </p>
