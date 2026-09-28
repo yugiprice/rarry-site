@@ -3,6 +3,8 @@ import { APP_SIGNUP_URL } from '../lib/config'
 import homeShot from '../assets/screenshots/home.jpg'
 import eventsTableShot from '../assets/screenshots/events-table.jpg'
 import eventsOrderShot from '../assets/screenshots/events-order.jpg'
+import matchInputShot from '../assets/screenshots/match-input.jpg'
+import calendarShot from '../assets/screenshots/calendar.jpg'
 
 function Shot({ src, alt }: { src: string; alt: string }) {
   return (
@@ -39,6 +41,7 @@ const SECTIONS: Section[] = [
     title: 'チームを作る・メンバーを招待する',
     body: (
       <>
+        <Shot src={homeShot} alt="ホーム画面（招待リンク）" />
         <p>
           トップページの「無料で始める」からアカウントを作成し、チーム名を入力するとチームが作成されます
           （作成した人がオーナー権限を持ちます）。
@@ -56,6 +59,7 @@ const SECTIONS: Section[] = [
     title: '試合を記録する・レーティングについて',
     body: (
       <>
+        <Shot src={matchInputShot} alt="試合入力画面" />
         <p>
           「試合入力」画面で対戦相手とセットカウントを選ぶだけで結果が記録され、Eloレーティングをベースにした
           レーティングが自動で計算されます。各セットの点数まで入力することもできます。
@@ -137,7 +141,7 @@ const SECTIONS: Section[] = [
     title: 'お知らせ・カレンダー・出欠確認',
     body: (
       <>
-        <Shot src={homeShot} alt="ホーム画面" />
+        <Shot src={calendarShot} alt="練習日カレンダー画面" />
         <p>
           ホーム画面から、サークル全体へのお知らせを投稿できます。重要なお知らせは先頭に固定表示できます。
         </p>
