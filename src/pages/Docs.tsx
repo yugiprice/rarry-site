@@ -2,6 +2,7 @@ import type { ReactNode } from 'react'
 import { APP_SIGNUP_URL } from '../lib/config'
 import PhoneMock from '../components/PhoneMock'
 import homeShot from '../assets/screenshots/home.jpg'
+import adminShot from '../assets/screenshots/admin.jpg'
 import eventsShot from '../assets/screenshots/events.jpg'
 import matchInputShot from '../assets/screenshots/match-input.jpg'
 import practiceShot from '../assets/screenshots/practice.jpg'
@@ -31,7 +32,7 @@ const SECTIONS: Section[] = [
   {
     id: 'team',
     title: 'チームを作る・メンバーを招待する',
-    image: { src: homeShot, alt: 'ホーム画面（招待リンク）' },
+    image: { src: adminShot, alt: '管理画面（統計）' },
     body: (
       <>
         <p>
