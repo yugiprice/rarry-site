@@ -2,10 +2,10 @@ import type { ReactNode } from 'react'
 import { APP_SIGNUP_URL } from '../lib/config'
 import PhoneMock from '../components/PhoneMock'
 import homeShot from '../assets/screenshots/home.jpg'
-import eventsOrderShot from '../assets/screenshots/events-order.jpg'
+import eventsShot from '../assets/screenshots/events.jpg'
 import matchInputShot from '../assets/screenshots/match-input.jpg'
 import practiceShot from '../assets/screenshots/practice.jpg'
-import eventsListShot from '../assets/screenshots/events-list.jpg'
+import teamOrderShot from '../assets/screenshots/team-order.jpg'
 import profileShot from '../assets/screenshots/profile.jpg'
 
 type Section = { id: string; title: string; body: ReactNode; image?: { src: string; alt: string } }
@@ -64,17 +64,6 @@ const SECTIONS: Section[] = [
     ),
   },
   {
-    id: 'ranking',
-    title: 'ランキング',
-    image: { src: eventsListShot, alt: '対戦表・順位画面' },
-    body: (
-      <p>
-        チーム内のレーティング順位を確認できます（管理者向け画面）。各メンバーのプロフィールページでは、
-        レーティングの推移グラフや直近の試合結果も見られます。
-      </p>
-    ),
-  },
-  {
     id: 'practice',
     title: '練習セッション',
     image: { src: practiceShot, alt: '練習セッション画面' },
@@ -94,7 +83,7 @@ const SECTIONS: Section[] = [
   {
     id: 'events',
     title: '対戦表（リーグ戦・トーナメント・団体戦・ダブルス）',
-    image: { src: eventsListShot, alt: '対戦表画面' },
+    image: { src: eventsShot, alt: '対戦表画面' },
     body: (
       <>
         <p>
@@ -114,7 +103,7 @@ const SECTIONS: Section[] = [
   {
     id: 'team-order',
     title: '団体戦のオーダー機能',
-    image: { src: eventsOrderShot, alt: '試合順画面' },
+    image: { src: teamOrderShot, alt: '団体戦オーダー編成画面' },
     body: (
       <>
         <p>
