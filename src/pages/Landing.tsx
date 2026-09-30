@@ -5,16 +5,16 @@ import homeShot from '../assets/screenshots/home.jpg'
 import profileShot from '../assets/screenshots/profile.jpg'
 import matchInputShot from '../assets/screenshots/match-input.jpg'
 
-type Feature = { icon: string; title: string; body: string; free?: boolean }
+type Feature = { icon: string; title: string; body: string }
 
 const FEATURES: Feature[] = [
-  { icon: '🏓', title: '試合入力・レーティング', body: '対戦相手と結果を入力するだけで、Eloベースのレーティングが自動計算されます。', free: true },
+  { icon: '🏓', title: '試合入力・レーティング', body: '対戦相手と結果を入力するだけで、Eloベースのレーティングが自動計算されます。' },
   { icon: '🏆', title: 'ランキング', body: 'チーム内の実力順が一目でわかります（管理者向け）。' },
   { icon: '⏱️', title: '練習セッション', body: '参加者を卓球台に自動で割り振り、台ごとのタイマーを自動進行。組み直しも簡単です。' },
   { icon: '📋', title: '対戦表', body: 'リーグ戦・トーナメント・団体戦・ダブルスに対応。団体戦はチームごとにオーダーを組んで、お互い確定するまで相手に見えない仕組みつき。' },
-  { icon: '💬', title: '掲示板', body: 'メンバーがそれぞれスレッドを立てて、話題ごとにコメントできます。', free: true },
-  { icon: '📊', title: 'アンケート', body: '期限つきのアンケートを作成でき、募集中だけホーム画面に表示されます。', free: true },
-  { icon: '📅', title: 'お知らせ・カレンダー・出欠確認', body: '練習日の連絡と出欠確認をカレンダーで一元管理。', free: true },
+  { icon: '💬', title: '掲示板', body: 'メンバーがそれぞれスレッドを立てて、話題ごとにコメントできます。' },
+  { icon: '📊', title: 'アンケート', body: '期限つきのアンケートを作成でき、募集中だけホーム画面に表示されます。' },
+  { icon: '📅', title: 'お知らせ・カレンダー・出欠確認', body: '練習日の連絡と出欠確認をカレンダーで一元管理。' },
   { icon: '📱', title: '他チームのビジター参加（QR）', body: '他チームのメンバーが自分のQRコードを見せるだけで、対戦相手として追加できます。' },
 ]
 
@@ -64,11 +64,6 @@ export default function Landing() {
               <div className="text-2xl">{f.icon}</div>
               <h3 className="mt-2 font-bold text-slate-800">{f.title}</h3>
               <p className="mt-1 text-sm text-slate-500">{f.body}</p>
-              {f.free && (
-                <span className="mt-2 inline-block rounded bg-emerald-50 px-1.5 py-0.5 text-[11px] font-bold text-emerald-700">
-                  無料プランでも利用可
-                </span>
-              )}
             </div>
           ))}
         </div>
@@ -94,31 +89,25 @@ export default function Landing() {
       <section id="pricing" className="section scroll-mt-16">
         <h2 className="text-center text-2xl font-black text-slate-800">料金プラン</h2>
         <p className="mx-auto mt-2 max-w-lg text-center text-sm text-slate-500">
-          チーム単位の月額課金制です。メンバーのアカウント登録は何人でも無料です。
+          チーム単位のシンプルな月額課金制です。プランは1つだけなので、迷わず始められます。
         </p>
-        <div className="mx-auto mt-8 grid max-w-3xl grid-cols-1 gap-5 sm:grid-cols-2">
-          <div className="card">
-            <h3 className="font-bold text-slate-800">無料プラン</h3>
-            <p className="mt-1 text-3xl font-black text-slate-900">¥0</p>
-            <ul className="mt-4 space-y-2 text-sm text-slate-600">
-              <li>✓ お知らせ・カレンダー・出欠確認</li>
-              <li>✓ 試合入力・レーティング</li>
-              <li>✓ ランキング</li>
-              <li>✓ 掲示板・アンケート</li>
-              <li>✓ プロフィール・試合履歴</li>
-            </ul>
-          </div>
+        <div className="mx-auto mt-8 max-w-sm">
           <div className="card ring-2 ring-brand-500">
             <h3 className="font-bold text-brand-700">フルプラン</h3>
             <p className="mt-1 text-3xl font-black text-slate-900">¥600<span className="text-base font-bold text-slate-400">/月（チームごと）</span></p>
-            <p className="mt-1 text-xs text-slate-400">新規チームは30日間無料トライアルつき</p>
+            <p className="mt-1 text-xs text-slate-400">新規チームは30日間無料トライアルつき・クレジットカード登録不要</p>
             <ul className="mt-4 space-y-2 text-sm text-slate-600">
-              <li>✓ 無料プランの全機能</li>
+              <li>✓ お知らせ・カレンダー・出欠確認</li>
+              <li>✓ 試合入力・レーティング・ランキング</li>
               <li>✓ 練習セッション（台割り・タイマー自動化）</li>
               <li>✓ 対戦表（リーグ戦・団体戦・トーナメント・ダブルス）</li>
+              <li>✓ 掲示板・アンケート・プロフィール</li>
             </ul>
-            <a href={APP_SIGNUP_URL} className="btn-primary mt-5 w-full">無料で始める</a>
+            <a href={APP_SIGNUP_URL} className="btn-primary mt-5 w-full">30日間無料トライアルを始める</a>
           </div>
+          <p className="mt-4 text-center text-xs text-slate-400">
+            メンバーのアカウント登録・参加は何人でも無料です。お支払いはチームのオーナーのみ。
+          </p>
         </div>
       </section>
 
@@ -127,7 +116,7 @@ export default function Landing() {
         <div className="card mx-auto max-w-2xl bg-brand-700 text-center text-white">
           <h2 className="text-xl font-black">今のサークル運営を、Rarry Proでラクにしませんか？</h2>
           <p className="mt-2 text-sm text-brand-50">登録から数分で使い始められます。</p>
-          <a href={APP_SIGNUP_URL} className="btn mt-5 bg-white text-brand-800 hover:bg-brand-50">無料で始める</a>
+          <a href={APP_SIGNUP_URL} className="btn mt-5 bg-white text-brand-800 hover:bg-brand-50">30日間無料トライアルを始める</a>
         </div>
       </section>
     </>
