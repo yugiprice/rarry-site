@@ -18,6 +18,14 @@ const FEATURES: Feature[] = [
   { icon: '📱', title: '他チームのビジター参加（QR）', body: '他チームのメンバーが自分のQRコードを見せるだけで、対戦相手として追加できます。' },
 ]
 
+type PlanCard = { key: string; label: string; price: number; maxMembers: number | null; highlight?: boolean }
+
+const PLANS: PlanCard[] = [
+  { key: 'basic', label: 'ベーシック', price: 300, maxMembers: 30 },
+  { key: 'standard', label: 'スタンダード', price: 600, maxMembers: 50, highlight: true },
+  { key: 'unlimited', label: 'アンリミテッド', price: 980, maxMembers: null },
+]
+
 const STEPS = [
   { n: '1', title: 'チームを作成', body: 'サークル・部活動・教室の名前でチームを作成します（30日間無料）。' },
   { n: '2', title: 'メンバーを招待', body: '招待リンクを共有するだけで、メンバーが自分のアカウントで参加できます。' },
@@ -89,26 +97,29 @@ export default function Landing() {
       <section id="pricing" className="section scroll-mt-16">
         <h2 className="text-center text-2xl font-black text-slate-800">料金プラン</h2>
         <p className="mx-auto mt-2 max-w-lg text-center text-sm text-slate-500">
-          チーム単位のシンプルな月額課金制です。プランは1つだけなので、迷わず始められます。
+          チーム単位のシンプルな月額課金制です。メンバーの人数に合わせて3つのプランから選べます。
+          機能はどのプランでも同じです。
         </p>
-        <div className="mx-auto mt-8 max-w-sm">
-          <div className="card ring-2 ring-brand-500">
-            <h3 className="font-bold text-brand-700">フルプラン</h3>
-            <p className="mt-1 text-3xl font-black text-slate-900">¥600<span className="text-base font-bold text-slate-400">/月（チームごと）</span></p>
-            <p className="mt-1 text-xs text-slate-400">新規チームは30日間無料トライアルつき・クレジットカード登録不要</p>
-            <ul className="mt-4 space-y-2 text-sm text-slate-600">
-              <li>✓ お知らせ・カレンダー・出欠確認</li>
-              <li>✓ 試合入力・レーティング・ランキング</li>
-              <li>✓ 練習セッション（台割り・タイマー自動化）</li>
-              <li>✓ 対戦表（リーグ戦・団体戦・トーナメント・ダブルス）</li>
-              <li>✓ 掲示板・アンケート・プロフィール</li>
-            </ul>
-            <a href={APP_SIGNUP_URL} className="btn-primary mt-5 w-full">30日間無料トライアルを始める</a>
-          </div>
-          <p className="mt-4 text-center text-xs text-slate-400">
-            メンバーのアカウント登録・参加は何人でも無料です。お支払いはチームのオーナーのみ。
-          </p>
+        <div className="mx-auto mt-8 grid max-w-4xl grid-cols-1 gap-5 sm:grid-cols-3">
+          {PLANS.map((p) => (
+            <div key={p.key} className={`card ${p.highlight ? 'ring-2 ring-brand-500' : ''}`}>
+              <h3 className={`font-bold ${p.highlight ? 'text-brand-700' : 'text-slate-800'}`}>{p.label}</h3>
+              <p className="mt-1 text-3xl font-black text-slate-900">
+                ¥{p.price}<span className="text-sm font-bold text-slate-400">/月</span>
+              </p>
+              <p className="mt-1 text-xs text-slate-400">
+                {p.maxMembers != null ? `メンバー${p.maxMembers}人まで` : 'メンバー人数の制限なし'}
+              </p>
+              <a href={APP_SIGNUP_URL} className={p.highlight ? 'btn-primary mt-5 w-full' : 'btn-sub mt-5 w-full'}>
+                30日間無料トライアルを始める
+              </a>
+            </div>
+          ))}
         </div>
+        <p className="mx-auto mt-6 max-w-lg text-center text-xs text-slate-400">
+          新規チームは、どのプランでも30日間無料トライアルからお試しいただけます（クレジットカード登録不要）。
+          メンバーのアカウント登録・参加は何人でも無料です。お支払いはチームのオーナーのみ。
+        </p>
       </section>
 
       {/* Final CTA */}
