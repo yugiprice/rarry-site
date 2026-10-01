@@ -57,6 +57,12 @@ function Footer() {
               <a href={APP_LOGIN_URL} className="block hover:text-brand-700">ログイン</a>
               <a href={APP_SIGNUP_URL} className="block hover:text-brand-700">無料で始める</a>
             </div>
+            <div className="space-y-2">
+              <div className="font-bold text-slate-600">法的情報</div>
+              <Link to="/legal" className="block hover:text-brand-700">特定商取引法に基づく表示</Link>
+              <Link to="/privacy" className="block hover:text-brand-700">プライバシーポリシー</Link>
+              <Link to="/terms" className="block hover:text-brand-700">利用規約</Link>
+            </div>
           </div>
         </div>
         <p className="mt-8 text-xs text-slate-300">&copy; {new Date().getFullYear()} Rarry Pro</p>
